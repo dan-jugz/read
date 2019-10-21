@@ -54,6 +54,13 @@ class Post(models.Model):
             assert False
 
 
+    @classmethod
+    def get_posts_by_username(cls,username):
+
+        posts=cls.objects.filter(author=username).order_by('-date_posted')
+        return posts
+
+
 class Review(models.Model):
   
     design=models.IntegerField(blank=True,default=0)
