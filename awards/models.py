@@ -41,6 +41,13 @@ class Post(models.Model):
         
         posts=cls.objects.order_by('-date_posted')
         return posts   
+                  
+
+    # method to delete a post
+    @classmethod
+    def delete_post(cls,post_id):
+        
+        img=cls.objects.get(id=post_id).delete()
 
 
     @classmethod
