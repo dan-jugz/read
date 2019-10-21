@@ -52,3 +52,17 @@ class Post(models.Model):
 
             raise Http404()
             assert False
+
+
+class Review(models.Model):
+  
+    design=models.IntegerField(blank=True,default=0)
+    usability=models.IntegerField(blank=True,default=0)
+    creativity=models.IntegerField(blank=True,default=0)
+    content=models.IntegerField(blank=True,default=0)
+    mobile=models.IntegerField(blank=True,default=0)
+    post=models.ForeignKey(Post,on_delete=models.CASCADE)
+    judge=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE)
+    average_review=models.IntegerField(blank=True,default=0)
+
+    
