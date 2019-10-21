@@ -22,6 +22,11 @@ class PostCreateView(LoginRequiredMixin,CreateView):
     template_name='awards/post-new.html'  
     success_url='/'
 
+    # setting up the user instance to the form being submitted so it doesnt raise the intergrity error
+    def form_valid(self,form):
+        
+        form.instance.author=self.request.user
+        return super().form_valid(form)
 
 # class view to render user posts
 class UserPostListView(ListView):
@@ -44,3 +49,8 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     fields=['title','description','link','image'] 
     template_name='awards/post-new.html'  
     
+    # setting up the user instance to the form being submitted so it doesnt raise the intergrity error
+    def form_valid(self,form):
+        
+        form.instance.author=self.request.user
+        return super().form_valid(form)
