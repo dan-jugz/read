@@ -65,4 +65,9 @@ class Review(models.Model):
     judge=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE)
     average_review=models.IntegerField(blank=True,default=0)
 
-    
+    def __str__(self):
+        return f'{self.post.title}:Review-{self.design}-{self.usability}-{self.creativity}-{self.content}-{self.mobile}-{self.post.id}' 
+      
+        
+    def save_review(self):
+        self.save()
