@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
+from django.urls import reverse
+from statistics import mean
 
 # Create your models here.
 class Post(models.Model):
