@@ -23,6 +23,10 @@ class Post(models.Model):
         return f'Post{self.title}--{self.description}--{self.author.username}'
 
 
+    # return full path of a url
+    def get_absolute_url(self):
+       
+        return reverse('post-detail',kwargs={'pk':self.pk}) 
 
 
     # method to save a post
