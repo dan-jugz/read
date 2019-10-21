@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import (CreateView,ListView)
+from django.views.generic import (CreateView,ListView,UpdateView)
 from .models import Post
 
 #login required mixins to add login required to the class based views
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 # Create your views here.
 
@@ -33,8 +33,14 @@ class UserPostListView(ListView):
     paginate_by=5
 
     def get_queryset(self):
-        '''
-
-        '''
+      
         user= get_object_or_404(User,username=self.kwargs.get('username'))
         return Post.get_posts_by_username(user)
+
+
+class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):  
+     
+    model=Post
+    fields=['title','description','link','image'] 
+    template_name='awards/post-new.html'  
+    
