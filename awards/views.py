@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import (CreateView)
+from django.views.generic import (CreateView,ListView)
+from .models import Post
+
+#login required mixins to add login required to the class based views
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
