@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 
 # Create your models here.
 class Post(models.Model):
@@ -19,3 +21,30 @@ class Post(models.Model):
     
     def __str__(self):
         return f'Post{self.title}--{self.description}--{self.author.username}'
+
+
+
+
+    # method to save a post
+    def save_post(self):
+            
+        self.save()
+
+
+    # method to fetch all posts
+    @classmethod
+    def get_posts(cls):
+        
+        posts=cls.objects.order_by('-date_posted')
+        return posts   
+
+
+    @classmethod
+    def get_post_by_id(cls,id):
+        try:
+
+            post=cls.objects.get(id=id)
+        except ObjectDoesNotExist:
+
+            raise Http404()
+            assert False
