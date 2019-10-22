@@ -54,3 +54,13 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
         
         form.instance.author=self.request.user
         return super().form_valid(form)
+
+
+class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+   
+    model=Post
+    success_url='/'
+    context_object_name='site'
+    template_name='awards/post-confirm-delete.html'
+
+    
