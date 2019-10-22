@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.urls import reverse
 from statistics import mean
+from django.db.models import Q
 
 # Create your models here.
 class Post(models.Model):
@@ -67,6 +68,14 @@ class Post(models.Model):
     def get_posts_by_username(cls,username):
 
         posts=cls.objects.filter(author=username).order_by('-date_posted')
+        return posts
+
+
+    # method that returns a post based on search query
+    @classmethod
+    def search(cls,search_term):
+
+        posts=cls.objects.filter(Q(title__icontains=search_term) |Q(author__username__icontains=search_term))   
         return posts
 
 
