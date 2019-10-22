@@ -7,8 +7,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 # Create your views here.
 
-def home(request):
-       return render(request,'awards/home.html')
+
+# class based home view
+class HomeListView(ListView):    
+    
+    model=Post
+    template_name='awards/home.html'
+    context_object_name='sites'
+    ordering=['-date_posted']
+    paginate_by=4
 
 
 
