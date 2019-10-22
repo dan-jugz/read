@@ -63,4 +63,26 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     context_object_name='site'
     template_name='awards/post-confirm-delete.html'
 
+
+
+# view function that leads to a single post
+def postDetail(request,pk):
     
+    post=Post.get_post_by_id(pk)
+    reviews=Review.get_all_reviews(pk)
+
+    post.design=reviews['design']
+    post.usability=reviews['usability']
+    post.creativity=reviews['creativity']
+    post.content=reviews['content']
+    post.mobile=reviews['mobile']
+    post.average_review=reviews['average_review']
+
+    post.save() 
+
+    context={
+        'site':post,
+        'form':form
+    }
+
+    return render(request,'awards/post-detail.html',context)
