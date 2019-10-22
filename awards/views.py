@@ -11,6 +11,13 @@ from users.models import Profile
 #login required mixins to add login required to the class based views
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
+# area api
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import PostSerializer
+from .serializer import ProfileSerializer
+from rest_framework import status
+
 # Create your views here.
 
 @login_required
@@ -157,3 +164,33 @@ def search_results(request):
         return render(request,'awards/search.html',context)
     else :
         return render(request,'awards/search.html')    
+
+
+
+class PostList(APIView):
+    def get(self,request,format=None):
+        all_posts=Post.objects.all()
+        serializers=PostSerializer(all_posts,many=True)
+        return Response(serializers.data)
+
+# Api view to fetch a single post
+class PostDescription(APIView):         
+
+    def get_post(self,pk):
+        
+        try:
+            return Post.objects.get(pk=pk)
+
+        except Post.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        post = self.get_post(pk)
+        serializers = PostSerializer(post)
+        return Response(serializers.data)        
+   
+
+
+class ProfileList(APIView):
+
+    def get(self,request,format=None):
