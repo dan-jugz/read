@@ -1,1 +1,55 @@
-<h1>fetch a post and provide its details here</h1>
+{% include 'awards/base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-header">
+          <img src="{{site.author.profile.profile_photo.url}}" class="rounded-circle" alt="">
+          <div class="post-header">
+             <div class="post-data">
+                <h5 class="card-title">
+                    <a href="{% url 'user-posts' site.author.username%}">By {{site.author.username}}</a>
+                  </h5>
+                  <small class="text-muted">{{site.date_posted}}</small>
+                  <div class="post-user-btn">
+                        {% if site.author == user %}
+                        <a href="{% url 'post-update' site.id %}" class="btn btn-sm btn-info">Update<i class="fa fa-refresh ml-2"></i></a>
+                        <a href="{% url 'post-delete' site.id %}" class="btn btn-sm btn-danger">Delete<i class="fa fa-trash ml-2"></i></a>
+                        {% endif %}
+                     </div>
+             </div>
+          </div>
+        </div>
+        <img src="{{site.image.url}}"  class="card-img-top" alt="">
+        <div class="card-body text-center">
+            <h5>{{site.title}} </h5>
+            <p class="card-text">{{site.description}}</p>
+            <div class="buttons">
+                <a href="{{site.link}}" class="btn btn-info btn-sm" target="_blank">Visit Website</a>
+                <a class="btn btn-sm btn-info" data-toggle='modal' data-target='#reviewModal'>Review</a>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <ul class="">
+              <li class="">Design:{{site.design}}</li>
+              <li class="">Creativity:{{site.creativity}}</li>
+              <li class="">Usability{{site.usability}}</li>
+              <li class="">Content:{{site.content}}</li>
+              <li class="">Mobile:{{site.mobile}}</li>
+              <li class="">Average Rating:{{site.average_review}}</li>
+            </ul>
+          
+        </div>
+          
+    </div>
+
+  </div>
+  <div class="col-md-2"></div>
+</div>
+</div>
+{% endblock content %}
