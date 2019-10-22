@@ -62,6 +62,14 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
         form.instance.author=self.request.user
         return super().form_valid(form)
 
+    # check if current user is the author of the post
+    def test_func(self):
+    
+        post=self.get_object()
+
+        if self.request.user==post.author:
+            return True
+        return False    
 
 class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
    
@@ -71,6 +79,14 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     template_name='awards/post-confirm-delete.html'
 
 
+    # check if current user is the author of the post
+    def test_func(self):
+    
+        post=self.get_object()
+
+        if self.request.user==post.author:
+            return True
+        return False    
 
 # view function that leads to a single post
 def postDetail(request,pk):
