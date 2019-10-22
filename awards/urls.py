@@ -8,4 +8,6 @@ urlpatterns=[
     path('user/<str:username>/posts',UserPostListView.as_view(),name='user-posts'),
     path('post/<int:pk>/',views.postDetail,name='post-detail'),
     path('post/<int:pk>/update/',PostUpdateView.as_view(),name='post-update'),
+    path('post/<int:pk>/delete/',PostDeleteView.as_view(),name='post-delete'),
+    
 ]
