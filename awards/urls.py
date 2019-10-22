@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import (PostCreateView,UserPostListView,HomeListView,PostUpdateView,PostDeleteView)
 from . import views
+from django.conf.urls import url
 
 urlpatterns=[
     path('', HomeListView.as_view(),name='awards-home'), 
@@ -10,5 +11,6 @@ urlpatterns=[
     path('post/<int:pk>/update/',PostUpdateView.as_view(),name='post-update'),
     path('post/<int:pk>/delete/',PostDeleteView.as_view(),name='post-delete'),
     path('search/',views.search_results,name='search-results'),
-    
-]
+    url(r'^api/posts/$', views.PostList.as_view()),
+    url(r'api/posts/post-id/(?P<pk>[0-9]+)/$',views.PostDescription.as_view()),
+    url(r'^api/profiles/$', views.ProfileList.as_view()),
