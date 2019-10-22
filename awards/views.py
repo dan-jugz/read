@@ -67,7 +67,7 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
 
 # view function that leads to a single post
 def postDetail(request,pk):
-    
+
     post=Post.get_post_by_id(pk)
     reviews=Review.get_all_reviews(pk)
 
@@ -78,7 +78,24 @@ def postDetail(request,pk):
     post.mobile=reviews['mobile']
     post.average_review=reviews['average_review']
 
-    post.save() 
+    post.save()
+
+
+    current_user=request.user
+    if request.method=='POST':
+        form=NewReviewForm(request.POST)
+        if form.is_valid():
+            review=form.save(commit=False)
+            review.judge=current_user
+            review.post=post
+            
+            review.save()
+            messages.success(request,f'Review Submitted')
+
+            return redirect('post-detail',pk)
+
+    else:
+        form=NewReviewForm()  
 
     context={
         'site':post,
