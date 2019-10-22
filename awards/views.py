@@ -1,21 +1,36 @@
 from django.shortcuts import render
 from django.views.generic import (CreateView,ListView,UpdateView,DeleteView)
-from .models import Post
+from .models import Post,Review
+from django.core.paginator import Paginator
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from .forms import NewReviewForm
+from django.contrib import messages
+from users.models import Profile
 
 #login required mixins to add login required to the class based views
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 # Create your views here.
 
+@login_required
+def home(request):
+
+    sites_list=Post.get_posts()
+    paginator = Paginator(sites_list, 5)
+    page = request.GET.get('page')
+    sites = paginator.get_page(page)
+
+    return render(request,'awards/home.html',{'sites':sites})
 
 # class based home view
-class HomeListView(ListView):    
+# class HomeListView(ListView):    
     
-    model=Post
-    template_name='awards/home.html'
-    context_object_name='sites'
-    ordering=['-date_posted']
-    paginate_by=4
+#     model=Post
+#     template_name='awards/home.html'
+#     context_object_name='sites'
+#     ordering=['-date_posted']
+#     paginate_by=4
 
 
 
