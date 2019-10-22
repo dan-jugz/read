@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import (CreateView,ListView,UpdateView)
+from django.views.generic import (CreateView,ListView,UpdateView,DeleteView)
 from .models import Post
 
 #login required mixins to add login required to the class based views
@@ -126,3 +126,19 @@ def postDetail(request,pk):
     }
 
     return render(request,'awards/post-detail.html',context)
+
+
+# view function that redirects to a search results page
+def search_results(request):    
+    
+    if 'site' in request.GET and request.GET['site']:
+        search_term=request.GET.get('site')
+        search_posts=Post.search(search_term)
+        context={
+            'message':f'{search_term}',
+            'sites':search_posts
+        }
+
+        return render(request,'awards/search.html',context)
+    else :
+        return render(request,'awards/search.html')    
