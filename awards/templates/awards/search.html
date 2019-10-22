@@ -1,0 +1,62 @@
+{% include 'awards/base.html'%}
+{% block content %}
+<div class="container">
+    
+    
+        <div class="text-center mb-3 mt-1">
+        {% if sites %}
+            <h4 class="text-center">Found {{ sites|length }} of searched term {{message}}</h4>
+        {% else %}
+            <h4 class="text-center"> Found 0 posts for the search term {{message}}</h4>
+        {% endif %}
+        </div>
+
+    
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+      {% for site in sites %}
+      <div class="card mb-3">
+        <div class="card-header">
+          <img src="{{site.author.profile.profile_photo.url}}" class="rounded-circle" alt="">
+          <div class="post-header">
+             <div class="post-data">
+                <h5 class="card-title">
+                    <a href="{% url 'user-posts' site.author.username%}">By {{site.author.username}}</a>
+                  </h5>
+                  <small class="text-muted">{{site.date_posted}}</small>
+             </div>
+          </div>
+        </div>
+        <img src="{{site.image.url}}"  class="card-img-top" alt="">
+        <div class="card-body text-center">
+            <h5><a href="{% url 'post-detail' site.id %}">{{site.title}}</a> </h5>
+            <p class="card-text">{{site.description}}</p>
+            <a href="{{site.link}}" class="btn btn-info btn-sm" target="_blank">Visit Website</a>
+        </div>
+        <div class="card-footer">
+            <ul class="">
+              <li class="">Design:{{site.design}}</li>
+              <li class="">Creativity:{{site.creativity}}</li>
+              <li class="">Usability{{site.usability}}</li>
+              <li class="">Content:{{site.content}}</li>
+              <li class="">Mobile:{{site.mobile}}</li>
+              <li>Average Rating:{{site.average_review}}</li>
+            </ul>
+          
+        </div>
+          
+    </div>
+
+  {% endfor %}
+
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+  
+   
+</div>
+
+{% endblock content %}
