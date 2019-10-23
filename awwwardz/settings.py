@@ -174,7 +174,7 @@ MEDIA_URL='/media/'
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
 # hijacking django and redirecting user to the homepage
-LOGIN_REDIRECT_URL='insta-home'
+LOGIN_REDIRECT_URL='awards-home'
 LOGIN_URL='login'
 
 django_heroku.settings(locals())
