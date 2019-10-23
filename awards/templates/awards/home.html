@@ -46,7 +46,36 @@
 
 
 </div>  
-   
+   <!-- =====================pagination======================================== -->
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      {% if sites.has_previous %}
+        <a class="btn btn-outline-primary mb-3" href="?page=1">First</a>
+        <a class="btn btn-outline-primary mb-3" href="?page={{ sites.previous_page_number}}">Previous</a>
+      {% endif %}
+
+      {% for num in sites.paginator.page_range  %}
+        {% if sites.number == num %}
+        <a class="btn btn-primary mb-3" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > sites.number|add:'-3' and num < sites.number|add:'3' %} 
+        <a class="btn btn-info mb-3" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+          
+      {% endfor %}
+
+      {% if sites.has_next%}
+      <a class="btn btn-outline-primary mb-3" href="?page={{ sites.next_page_number}}">Next</a>
+      <a class="btn btn-outline-primary mb-3" href="?page={{ sites.paginator.num_pages}}">Last</a>
+    {% endif %}
+
+
+    
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+<!-- ==================================end pagination========================== -->
+  
 </div>
 
 {% endblock content %}
