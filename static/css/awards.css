@@ -1,0 +1,349 @@
+:root {
+  --bg-color: #fafafa;
+  --text-color: #0000;
+  --floral: floralwhite;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  /* background:#525f7f!important; */
+  background: #fff!important;
+  
+}
+
+.btn.btn-info.btn-sm{
+  background: #e14eca !important;
+  color: #fff !important;
+  border:#e14eca !important;
+}
+
+
+i.fa {
+  color: #050833;
+}
+/* ==============navbar==================== */
+.navbar.navbar-expand-md.navbar-light.bg-secondary.sticky-top {
+  background: #e14eca !important;
+}
+
+.bg-light {
+  background-color: #fff !important;
+}
+
+nav a.navbar-brand {
+  padding-right: 14px;
+  color: #050833;
+}
+
+ul.navbar-nav a.nav-item > i.fa {
+  padding: 0 8px;
+}
+
+ul.navbar-nav a.nav-item.nav-link {
+  color: #fff !important;
+  text-transform: capitalize;
+  font-size: 16px;
+}
+/* ===============end navbar====================== */
+
+/*********welcome section***************** */
+
+#welcome-section {
+    height: 90vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/hero-bg.jpg) right bottom no-repeat;
+    background-size: cover;
+    height: 95vh;
+    background-attachment: scroll;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    clip-path: none;
+    margin-bottom: 10px;
+    /* background: white; */
+}
+
+
+.caption {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 38%;
+  z-index: 1;
+  color: white;
+  text-transform: uppercase;
+}
+
+.caption h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: .3rem;
+  text-shadow: .1rem .1rem .8rem black;
+  padding-bottom: 1rem;
+}
+
+.caption h3 {
+  font-size: 1.8rem;
+  text-shadow: .1rem .1rem .5rem black;
+  padding-bottom: 1.6rem;
+}
+
+.btn-lg {
+  border-width: medium;
+  border-radius: 0;
+  padding: .6rem 1.3rem;
+  font-size: 1.1rem;
+}
+
+/* ===============end welcome section====================== */
+
+
+/* ===============cards home page====================== */
+.card,
+.card-header,
+.card-body,
+.card-footer {
+  background: #fff !important;
+}
+
+.card {
+  /* border: 1px solid #03bfcb; */
+  color: #050833 !important;
+}
+
+.card-header {
+  display: flex;
+}
+.card-header > img {
+  height: 60px;
+  width: 60px;
+  margin-right: 16px;
+  border: 1px solid #ddd;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.post-user-btn {
+  margin-left: 1px;
+  margin-top: 4px;
+}
+
+.card-header .post-data {
+  padding-bottom: 1px;
+  margin-bottom: 5px;
+}
+
+.post-data h5.card-title > a {
+  text-transform: capitalize;
+  margin-left: 4px;
+  padding-right: 4px;
+  color: #e14eca;
+}
+
+.post-data h5.card-title > a:hover {
+  text-decoration: underline #e14eca;
+  color: #e14eca;
+}
+
+.post-data .card-title > a:hover {
+  text-decoration: aqua;
+}
+
+.card-img-top{
+  border-radius: 0 !important;
+}
+
+.post-title a {
+  color: #e14eca !important;
+  text-transform: capitalize;
+  font-size: 23px;
+  line-height: 28px;
+  text-shadow: 1px 1px 1px #222;
+}
+
+.card-body h5 > a {
+  color: #e14eca !important;
+}
+
+.card-body h5 > a:hover {
+  text-decoration: underline #e14eca;
+  color: #e14eca;
+}
+
+
+
+/* =================profile========================= */
+
+.card-body.profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+}
+
+.card-body > .card-img > img {
+  height: 150px;
+  width: 150px;
+  margin-right: 19px;
+  border: 1px solid #ddd;
+}
+
+.card-body .card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info > .user-utils {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.user-utils h5 {
+  padding-right: 8px;
+}
+
+.card-info .user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============Post detail============================== */
+
+.post-comment-body {
+  display: flex;
+}
+
+.post-comment-body > img {
+  height: 60px;
+  width: 60px;
+  margin-right: 16px;
+  border: 1px solid #ddd;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.post-comment-header > .post-comment-data {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-footer {
+  text-align: left;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.card-footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-footer ul li {
+  border: 1px solid #2d2747;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0 7px 7px 0;
+  padding: 7px;
+}
+
+/* ===============end post detail============================== */
+
+/* ===============Section masonry============================== */
+
+section.masonry-grid {
+  position: relative;
+}
+
+.grid {
+  margin: 0 auto;
+}
+
+/* clear fix */
+.grid:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+
+.grid-item {
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-item img {
+  display: block;
+  width: 100%;
+}
+
+.grid-item .content-slide-up {
+  position: absolute;
+  width: 100%;
+  padding: 10px;
+  bottom: -100px;
+  transition: 0.6s;
+  z-index: 1;
+}
+
+.grid-item .content-slide-up > p {
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 5px auto 0 auto;
+  font-size: 0.9rem;
+}
+
+.content-slide-up > hr.underline {
+  border: 0.1px solid cyan;
+  background: cyan;
+  width: 100px;
+  height: 0.7px;
+  margin: 15px auto 0 auto;
+}
+
+.grid-item .overlay-slide-down {
+  height: 0%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.grid-item:hover .content-slide-up {
+  bottom: 25%;
+  opacity: 1;
+}
+
+.grid-item:hover .overlay-slide-down {
+  opacity: 0.85;
+  height: 100%;
+}
+
+a.grid-item-anchor:hover {
+  cursor: finger;
+}
+
+/* ==================end profile=================== */
